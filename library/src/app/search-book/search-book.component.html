@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="card shadow mb-4"> 
+       <div class="card-body">
+           <h1>Rechercher des livres </h1>
+           <form name="f1">
+               Choisir un critère de recherche :
+               <input type="radio" name="critere" [(ngModel)]="critere" value="titre"> par Titre
+               <input type="radio" name="critere" [(ngModel)]="critere" value="categorie"> par Genre
+            </form><br>
+          <div [ngSwitch]="critere">
+            <form name="f2" class="form-inline">
+               <div class="form-group mx-sm-3 mb-2 mt-2 " *ngSwitchCase="'titre'">
+                 <label>Titre à chercher : </label>
+                 <input type="text" class="form-control" name="titre" class="form-control" #titreArticle (keyup)="chercherParTitre(titreArticle.value)">
+               </div>
+               <div class="form-group" *ngSwitchCase="'categorie'">Genre 
+                <select class="form-control form-control-lg" id="codec" name="codec" [(ngModel)]="categRech" (change)="chercherParGenre()">
+                  <option *ngFor="let category of categories" value="{{category.codec}}">{{category.nomcat}}</option>
+                </select> 
+            <button type="submit" (click)="reset()" class="btn btn-dark mb-2 ml-2">Reinitialiser</button>
+            </div>
+            </form>
+          </div>
+           <table width="100%" border="2">
+              <thead>
+                    <tr>
+                       <th>Code</th>
+                       <th>Titre</th>
+                       <th>Ecrivain</th>
+                       <th>Genre</th>
+                       <th>Année de sortie</th>
+                       <th>Quantité disponible</th>
+                    </tr>
+             </thead> 
+             <tbody *ngFor="let article of  articles">
+                <tr >
+                   <td>{{article.code}}</td>
+                   <td>{{article.titre | uppercase}}</td>
+                   <td>{{article.ecrivain}}</td>
+                   <td>{{article.categ.nomcat}}</td>
+                   <td>{{article.annees }}</td>
+                   <td>{{article.qte }}</td>
+                </tr> 
+             </tbody>
+        </table>
+    </div>
+</div>
+</div>
+

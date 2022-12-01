@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="card shadow mb-4"> 
+       <div class="card-body">
+           <h1>Liste des livres </h1>
+           <table width="100%" border="2">
+              <thead>
+                    <tr>
+                       <th>Code</th>
+                       <th>Titre</th>
+                       <th>Ecrivain</th>
+                       <th>Genre</th>
+                       <th>Année de sortie</th>
+                       <th>Quantité disponible</th>
+                       <th>Prix</th>
+                       <th>Approvisionner</th>  
+                       <th *ngIf="authServ.testerAdmin()">Action</th>  
+                       
+                    </tr>
+             </thead> 
+             <tbody *ngFor="let article of  tab_art">
+                <tr >
+                   <td>{{article.code}}</td>
+                   <td>{{article.titre | uppercase}}</td>
+                   <td>{{article.ecrivain}}</td>
+                   <td>{{article.categ.nomcat}}</td>
+                   <td>{{article.annees }}</td>
+                   <td>{{article.qte }}</td>
+                   <td>{{article.prix}}</td>
+                   <td *ngIf="article.qte==0"  [ngStyle]="zeroStyle">Oui</td>
+                   <td *ngIf="article.qte!=0">Non</td>
+                   
+                   <td>
+                     <a class="btn btn-warning" [routerLink]="['/update-book',article.code]" *ngIf="authServ.testerAdmin()">
+                     <img src="../assets/img/edit.png" height="32" width="32"></a>
+                     <a class="btn btn-danger" (click)="suppArticle(article)" *ngIf="authServ.testerAdmin()">
+                        <img src="../assets/img/delete.png" height="32" width="32">
+                     </a>
+
+
+                     </td>
+                </tr> 
+             </tbody>
+        </table>
+    </div>
+</div>
+</div>

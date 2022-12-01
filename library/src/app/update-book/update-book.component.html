@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div>
+    <h2>Modifier un article</h2> 
+    </div>
+    <form >
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Code</label>
+    <input readonly type="text" [(ngModel)]="articleCourant.code" name="code" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >Titre</label>
+    <input type="text"[(ngModel)]= "articleCourant.titre" name="titre" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Ecrivain</label>
+    <input type="text" [(ngModel)]= "articleCourant.ecrivain" name="ecrivain" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Categorie</label>
+        <select class="form-control form-control-lg" id="codec" name="codec" [(ngModel)]="codecModifie">
+        <option *ngFor="let category of categories" [value]=" category.codec">{{ category.nomcat}}</option>
+        </select>
+        </div>
+    
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Annee</label>
+    <input type="date" [ngModel]="articleCourant.annees | date: 'yyyy-MM-dd'" (ngModelChange)=" articleCourant.annees= $event" name="annees" class="form-control">
+    </div>
+    
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Quantite</label>
+        <input type="number" [(ngModel)]= "articleCourant.qte" name="genre" class="form-control">
+        </div>
+    <div class="mt-2">
+    <button type="submit" (click)="modifArticle()" class="btn btn-success">Modifer</button>
+    </div>
+    </form>
+    </div>    

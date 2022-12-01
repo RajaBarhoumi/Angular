@@ -1,0 +1,57 @@
+
+<div class="container">
+    <div>
+    <h2>Ajouter un Livre</h2> 
+    </div>
+    <form >
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Code </label>
+    <input type="number" [(ngModel)]="newArticle.code" name="code" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >titre</label>
+    <input type="text"[(ngModel)]="newArticle.titre"  name="titre" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Ecrivain</label>
+    <input type="text" [(ngModel)]="newArticle.ecrivain" name="ecrivain" class="form-control">
+    </div>
+    
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Genre</label>
+        <select class="form-control form-control-lg" id="codec" name="codec"
+        [(ngModel)]="newCodec">
+        <option *ngFor="let cat of categories" [value]="cat.codec">
+        {{cat.nomcat}}</option>
+        </select>
+        </div>
+    <!--
+    <select name="genre" [(ngModel)]="newArticle.genre" class="form-control" aria-placeholder="Choisir">
+        <option value="Comique">Comique</option>
+        <option value="Tragidique">Tragidique</option>
+        <option value="Dramatique">Dramatique</option>
+        <option value="Politique">Politique</option>
+
+        <option value="Fiction">Fiction</option>
+    </select>
+    </div>
+    -->
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Date de sortie</label>
+    <input type="date" [(ngModel)]="newArticle.annees" name="annees" class="form-control">
+    </div>
+    
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >Quantité</label>
+        <input type="number" [(ngModel)]="newArticle.qte" name="qte" class="form-control">
+        </div>
+    <div class="mt-2">
+    <button type="submit" (click)="addArticle()" class="btn  btn-success">Ajouter</button>
+    </div>
+    </form>
+   </div>
+   <div>
+    <!--
+        <app-books></app-books></div>
+    -->
+   
